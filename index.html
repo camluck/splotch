@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
 <title>Splotchy · Make your own phone wallpaper!</title>
 <meta name="description" content="Splotchy helps kids make their own phone wallpapers. Say it, draw it, save it! No ads, no accounts, no data collected.">
 <meta property="og:title" content="Splotchy · Make your own phone wallpaper!">
@@ -13,202 +14,65 @@
 <meta name="apple-itunes-app" content="app-id=6824162290">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/app.css">
 <style>
-  :root {
-    --cream: #fff7ec;
-    --ink: #2b2433;
-    --soft: #6e6578;
-    --grape: #8b5cf6;
-    --pink: #ff5fa2;
-    --sun: #ffc800;
-    --sky: #1cb0f6;
-    --lime: #58cc02;
-    --orange: #ff9600;
-    --teal: #14b8a6;
-    --cherry: #ff4b4b;
-    --card: #ffffff;
-    --line: #f0e4d2;
-    --dot: rgba(255, 150, 0, 0.13);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root { --cream: #1c1626; --ink: #fff7ec; --soft: #c7bdd6; --card: #2a2236; --line: #3a3048; --dot: rgba(255, 150, 0, 0.08); }
-  }
+  /* ---------- Hero ---------- */
+  .hero { text-align: center; padding-top: 28px; }
+  .greet { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0 auto 22px; }
+  .greet .buddy { width: 124px; }
+  .hero h1 { font-size: clamp(46px, 8.4vw, 92px); line-height: 1; letter-spacing: -0.03em; margin: 0; }
+  .hero h1 .pink { color: var(--bubblegum); } .hero h1 .grape { color: var(--grape); } .hero h1 .sky { color: var(--sky); }
+  .hero .tag { font-size: 22px; color: var(--soft); margin: 18px 0 30px; }
+  .hero .tag b { color: var(--ink); }
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--cream);
-    background-image: radial-gradient(circle, var(--dot) 7px, transparent 8px);
-    background-size: 46px 46px;
-    color: var(--ink);
-    font-family: "Nunito", ui-rounded, system-ui, -apple-system, sans-serif;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 1.4;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-  img { display: block; max-width: 100%; }
-  a { color: inherit; }
-  .wrap { width: 100%; max-width: 1080px; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px; }
-  .hand { font-family: "Gochi Hand", "Marker Felt", cursive; font-weight: 400; }
-
-  /* Chunky buttons with a lip, like Splotchy's */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    padding: 16px 26px; border-radius: 22px; border: 0; cursor: pointer;
-    font: 900 19px/1 "Nunito", sans-serif; text-decoration: none; color: #fff;
-    background: var(--lime); box-shadow: 0 6px 0 #46a302;
-    transition: transform .12s ease, box-shadow .12s ease;
-  }
-  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 0 #46a302; }
-  .btn:active { transform: translateY(6px); box-shadow: 0 0 0 #46a302; }
-  .btn svg { width: 22px; height: 22px; }
-  .btn.ink { background: #2b2433; box-shadow: 0 6px 0 #000; }
-  .btn.ink:hover { box-shadow: 0 8px 0 #000; }
-  .btn.ink:active { box-shadow: 0 0 0 #000; }
-
-  /* Nav */
-  nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--cream) 90%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-  nav .wrap { display: flex; align-items: center; height: 64px; gap: 12px; }
-  .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 30px; }
-  .logo img { width: 36px; height: 36px; }
-  nav .mini { margin-left: auto; padding: 10px 16px; font-size: 15px; border-radius: 16px; box-shadow: 0 4px 0 #46a302; }
-  nav .mini:active { box-shadow: 0 0 0 #46a302; transform: translateY(4px); }
-
-  /* Hero */
-  .hero { padding: 36px 20px 0; text-align: center; }
-  .hero h1 { font-size: clamp(54px, 10vw, 104px); line-height: .92; margin: 0; }
-  .hero h1 .c1 { color: var(--pink); } .hero h1 .c2 { color: var(--grape); } .hero h1 .c3 { color: var(--sky); }
-  .chip-swap {
-    display: inline-flex; align-items: center; justify-content: center; margin: 20px auto 0;
-    background: var(--card); border: 3px solid var(--line); border-radius: 999px;
-    padding: 8px 20px; font-size: 20px; min-width: 250px;
-  }
-  .chip-swap span { transition: opacity .25s, transform .25s; display: inline-block; }
-  .chip-swap span.out { opacity: 0; transform: translateY(8px) scale(.9); }
-  .tag { color: var(--soft); font-size: 21px; margin: 20px 0 32px; }
-  .tag b { color: var(--ink); }
-
-  .stage { position: relative; max-width: 760px; height: 640px; margin: 60px auto 0; }
-  .phone {
-    background: #1b1722; border-radius: 42px; padding: 8px; aspect-ratio: 1320 / 2868;
-    box-shadow: 0 24px 50px -18px rgba(43, 36, 51, .45);
-  }
-  .phone img { width: 100%; height: 100%; object-fit: cover; border-radius: 34px; }
+  .stage { position: relative; max-width: 760px; height: 640px; margin: 64px auto 0; }
   .stage .phone { position: absolute; width: 240px; top: 0; }
   .stage .mid { left: 50%; margin-left: -120px; z-index: 3; }
   .stage .left { left: 50%; margin-left: -330px; top: 56px; transform: rotate(-9deg); z-index: 2; }
   .stage .right { left: 50%; margin-left: 90px; top: 56px; transform: rotate(9deg); z-index: 2; }
+  .sticker { position: absolute; z-index: 4; font-size: 46px; line-height: 1; animation: bob 3.2s ease-in-out infinite; filter: drop-shadow(0 6px 6px rgba(0,0,0,.12)); }
+  .st1 { right: 4%; top: 6px; animation-delay: -1s; } .st2 { right: 0; top: 340px; animation-delay: -2s; } .st3 { left: 6%; top: 36px; animation-delay: -.5s; } .st4 { left: 2%; top: 360px; animation-delay: -1.6s; }
 
-  .float { position: absolute; z-index: 4; font-size: 46px; line-height: 1; animation: bob 3.2s ease-in-out infinite; filter: drop-shadow(0 6px 6px rgba(0,0,0,.12)); user-select: none; }
-  .float.blob { width: 120px; }
-  @keyframes bob { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-16px) rotate(6deg); } }
+  /* ---------- Home-screen strip (challenge + idea), like the app ---------- */
+  .home-strip { max-width: 760px; margin: 0 auto; display: grid; gap: 18px; }
+  .idea-row { display: grid; grid-template-columns: 1fr auto; gap: 14px; }
 
-  .buddy { cursor: pointer; transition: filter .3s; -webkit-tap-highlight-color: transparent; }
-  .bubble {
-    position: absolute; z-index: 5; background: var(--card); color: var(--ink);
-    border-radius: 18px; padding: 10px 14px; font-size: 16px; white-space: nowrap;
-    box-shadow: 0 4px 0 rgba(0,0,0,.08); pointer-events: none;
-  }
-
-  /* Sections */
-  section { margin-top: 150px; }
-  .title { text-align: center; font-size: clamp(42px, 6.4vw, 70px); line-height: 1.05; margin: 0 0 16px; }
-  .sub { text-align: center; color: var(--soft); font-size: 20px; margin: 0 0 52px; }
-
-  /* Mode cards */
-  .modes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
-  .mode {
-    border-radius: 28px; padding: 24px 12px 20px; text-align: center; color: #fff;
-    box-shadow: 0 7px 0 rgba(0,0,0,.18); transition: transform .2s;
-  }
-  .mode:hover { transform: rotate(-3deg) scale(1.04); }
-  .mode:nth-child(even):hover { transform: rotate(3deg) scale(1.04); }
-  .mode .e { font-size: 50px; width: 82px; height: 82px; margin: 0 auto 10px; display: grid; place-items: center; background: rgba(255,255,255,.25); border-radius: 50%; }
-  .mode b { display: block; font-size: 20px; font-weight: 900; line-height: 1.15; }
-  .mode span { display: block; margin-top: 4px; font-size: 15px; opacity: .92; }
-
-  /* Imagine demo */
-  .imagine { display: grid; grid-template-columns: 1fr 300px; gap: 80px; align-items: center; }
-  .bubbles { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; }
-  .thought {
-    background: var(--card); border: 3px solid var(--grape); border-radius: 999px;
-    padding: 12px 18px; font-size: 20px; box-shadow: 0 4px 0 rgba(139,92,246,.25);
-  }
-  .thought.p { border-color: var(--pink); box-shadow: 0 4px 0 rgba(255,95,162,.25); }
-  .thought.s { border-color: var(--sky); box-shadow: 0 4px 0 rgba(28,176,246,.25); }
-  .plus { font-size: 30px; color: var(--grape); }
-  .arrow { font-size: 44px; text-align: center; margin: 28px 0 8px; }
+  /* ---------- Imagine ---------- */
+  .imagine { display: grid; grid-template-columns: 1fr 300px; gap: 72px; align-items: center; }
+  .bubble-tray { display: flex; flex-wrap: wrap; gap: 10px 8px; align-items: center; justify-content: center; }
   .imagine .phone { width: 280px; margin: 0 auto; transform: rotate(2deg); }
-  .ai-note { text-align: center; color: var(--soft); font-size: 16px; margin: 12px 0 0; }
+  .make-it { margin-top: 26px; text-align: center; }
+  .note { text-align: center; color: var(--soft); font-size: 16px; margin: 16px 0 0; }
 
-  /* Challenge band */
-  .band { border-radius: 40px; padding: 64px 56px; color: #fff; background: linear-gradient(135deg, var(--grape), var(--pink)); box-shadow: 0 8px 0 #6d3fd6; }
-  .band .inner { display: grid; grid-template-columns: 1fr 250px; gap: 64px; align-items: center; }
-  .band h2 { font-size: clamp(42px, 5.6vw, 64px); line-height: 1.05; margin: 0 0 18px; }
-  .band p { font-size: 20px; margin: 0 0 30px; }
-  .prizes { display: flex; flex-wrap: wrap; gap: 10px; }
-  .prize { background: rgba(255,255,255,.22); border-radius: 18px; padding: 10px 14px; font-size: 30px; line-height: 1; }
-  .band .phone { width: 250px; transform: rotate(-4deg); }
-  .seasons { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 44px; }
-  .season { background: var(--card); border: 3px solid var(--line); border-radius: 22px; padding: 8px 16px; font-size: 18px; display: flex; gap: 8px; align-items: center; }
-  .season span { font-size: 26px; }
+  /* ---------- Challenges & prizes ---------- */
+  .prizes { display: grid; grid-template-columns: 1fr 260px; gap: 64px; align-items: center; }
+  .badges { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 12px; margin-top: 28px; }
+  .prizes .phone { width: 260px; margin: 0 auto; transform: rotate(-3deg); }
+  .seasons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 52px; }
 
-  /* Screenshot parade */
-  .parade { overflow: hidden; padding: 28px 0 40px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  /* ---------- Parade ---------- */
+  .parade { overflow: hidden; padding: 24px 0 40px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
   .track { display: flex; gap: 22px; width: max-content; animation: slide 40s linear infinite; }
-  .track .phone { width: 190px; border-radius: 34px; padding: 7px; flex: none; }
-  .track .phone img { border-radius: 27px; }
+  .track .phone { width: 190px; flex: none; }
   .track .phone:nth-child(odd) { transform: rotate(-3deg); } .track .phone:nth-child(even) { transform: rotate(3deg); }
   @keyframes slide { to { transform: translateX(calc(-50% - 11px)); } }
 
-  /* Grown-ups */
-  .grown { background: var(--card); border: 3px solid var(--line); border-radius: 36px; padding: 60px 48px; }
-  .grown h2 { margin: 0 0 12px; font-size: clamp(38px, 5vw, 54px); line-height: 1; text-align: center; }
-  .grown .sub { margin-bottom: 40px; }
-  .promises { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-  .promise { background: var(--cream); border-radius: 22px; padding: 24px 14px; text-align: center; }
-  .promise .e { font-size: 38px; line-height: 1.2; }
-  .promise b { display: block; font-size: 18px; margin-top: 4px; }
-  .promise span { display: block; font-size: 14px; color: var(--soft); font-weight: 600; margin-top: 2px; }
-  .faq { margin-top: 36px; display: grid; gap: 12px; }
-  details { background: var(--cream); border-radius: 18px; padding: 14px 18px; }
-  summary { cursor: pointer; font-size: 17px; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; font-size: 22px; line-height: 1; color: var(--grape); }
-  details[open] summary::after { content: "–"; }
-  details p { margin: 10px 0 2px; font-weight: 600; color: var(--soft); font-size: 16px; }
-  details a { color: var(--grape); }
+  /* ---------- Grown-ups (styled like the app's grown-up lock) ---------- */
+  .gate { max-width: 860px; margin: 0 auto; text-align: center; }
+  .gate .lock { font-size: 52px; }
+  .gate .q { color: var(--grape); font-size: 24px; margin: 6px 0 30px; }
+  .promises { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .faq { margin-top: 30px; display: grid; gap: 12px; text-align: left; }
 
-  /* Final */
+  /* ---------- Final ---------- */
   .final { text-align: center; }
-  section.final { margin-top: 170px; }
-  .final .buddy { width: 170px; margin: 0 auto; animation: bob 2.8s ease-in-out infinite; }
-  .final h2 { font-size: clamp(48px, 8vw, 84px); margin: 14px 0 32px; line-height: 1.05; }
+  .final .greet { margin-bottom: 18px; }
+  .final h2 { margin-bottom: 28px; }
 
-  footer { padding: 90px 0 50px; }
-  footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; justify-content: center; color: var(--soft); font-size: 15px; }
-  footer a { text-decoration: none; }
-  footer a:hover { color: var(--grape); }
-
-  .pop { opacity: 0; transform: translateY(24px) scale(.97); transition: opacity .6s ease, transform .6s cubic-bezier(.2,1.4,.4,1); }
-  .pop.in { opacity: 1; transform: none; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .float, .final .buddy, .track { animation: none; }
-    .pop { opacity: 1; transform: none; }
-  }
-
-  /* Tablet */
   @media (max-width: 880px) {
-    .modes { grid-template-columns: repeat(2, 1fr); }
-    .imagine { grid-template-columns: 1fr; gap: 44px; }
-    .band .inner { grid-template-columns: 1fr; text-align: center; gap: 44px; }
-    .band .prizes { justify-content: center; }
-    .band .phone { margin: 0 auto; }
+    .imagine, .prizes { grid-template-columns: 1fr; gap: 44px; }
     .promises { grid-template-columns: repeat(2, 1fr); }
     .stage { height: 560px; }
     .stage .phone { width: 200px; }
@@ -216,128 +80,152 @@
     .stage .left { margin-left: -270px; }
     .stage .right { margin-left: 70px; }
   }
-
-  /* Phone */
   @media (max-width: 560px) {
-    body { font-size: 17px; }
-    .hero { padding-top: 22px; }
-    .tag { font-size: 19px; }
-    .chip-swap { font-size: 18px; min-width: 0; }
-    .stage { height: 440px; margin-top: 40px; }
-    .stage .phone { width: 160px; border-radius: 30px; padding: 6px; }
-    .stage .phone img { border-radius: 24px; }
+    .greet .buddy { width: 92px; }
+    .hero .tag { font-size: 19px; }
+    .stage { height: 440px; margin-top: 44px; }
+    .stage .phone { width: 160px; }
     .stage .mid { margin-left: -80px; }
-    .stage .left { margin-left: -168px; top: 44px; }
-    .stage .right { margin-left: 8px; top: 44px; }
-    .float { font-size: 32px; }
-    .float.blob { width: 78px; }
-    section { margin-top: 110px; }
-    .sub { font-size: 18px; margin-bottom: 36px; }
-    .modes { gap: 14px; }
-    .mode { padding: 18px 8px 16px; border-radius: 24px; }
-    .mode .e { width: 64px; height: 64px; font-size: 36px; }
-    .mode b { font-size: 17px; }
-    .mode span { font-size: 13px; }
-    .thought { font-size: 17px; padding: 10px 14px; }
+    .stage .left { margin-left: -160px; top: 44px; }
+    .stage .right { margin-left: 0; top: 44px; }
+    .sticker { font-size: 32px; }
+    .st2 { top: 300px; } .st4 { top: 320px; }
     .imagine .phone { width: 220px; }
-    .band { padding: 44px 22px; border-radius: 30px; }
-    .band p { font-size: 18px; }
-    .band .phone { width: 200px; }
-    .grown { padding: 40px 18px; border-radius: 28px; }
+    .prizes .phone { width: 210px; }
+    .badges { gap: 18px 8px; }
+    .track .phone { width: 148px; }
     .promises { gap: 12px; }
-    .track .phone { width: 148px; border-radius: 28px; padding: 6px; }
-    .track .phone img { border-radius: 23px; }
-    nav .mini { padding: 9px 12px; font-size: 14px; }
-    .logo { font-size: 26px; }
-    section.final { margin-top: 120px; }
   }
 </style>
 </head>
 <body>
 
-<nav>
+<nav class="topbar">
   <div class="wrap">
-    <a class="logo hand" href="/" aria-label="Splotchy home"><img src="/img/splotchy.png" alt="">splotchy</a>
-    <a class="btn mini" href="https://apps.apple.com/app/id6824162290">Get it free!</a>
+    <a href="/" class="wordmark" aria-label="Splotchy home">
+      <span>S</span><span>p</span><span>l</span><span>o</span><span>t</span><span>c</span><span>h</span><span>y</span>
+    </a>
+    <div class="chips" aria-hidden="true">
+      <span class="stat"><span>🔥</span><b class="orange">5</b></span>
+      <span class="stat"><span>⭐</span><b class="gold" id="stars">245</b></span>
+    </div>
   </div>
 </nav>
 
-<header class="hero">
-  <h1 class="hand"><span class="c1">Make</span> your own <span class="c2">wall</span><span class="c3">paper!</span></h1>
-  <div class="chip-swap" aria-live="polite"><span id="swap">🍭 made of candy</span></div>
+<header class="hero wrap">
+  <div class="greet">
+    <img class="buddy splotch" id="buddy" src="/img/splotchy.png" alt="Splotchy. Tap to say hi!">
+    <div class="speech left-tail" id="speech">Hi! Let's make your very own wallpaper!</div>
+  </div>
+  <h1 class="r"><span class="pink">Make</span> your own <span class="grape">wall</span><span class="sky">paper!</span></h1>
   <p class="tag"><b>Say it.</b> Draw it. Save it. 🎨</p>
-  <a class="btn ink" href="https://apps.apple.com/app/id6824162290">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.45c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.72-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.74 2.21 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.15.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.31-.89-2.33-3.54zM14.18 5.98c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>
-    Get it on the App Store
-  </a>
+  <div class="cta-row">
+    <a class="chunky lime big" href="https://apps.apple.com/app/id6824162290">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.45c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.72-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.74 2.21 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.15.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.31-.89-2.33-3.54zM14.18 5.98c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>
+      GET IT FREE!
+    </a>
+    <a class="chunky white big" href="#grownups">🔒 Grown-ups</a>
+  </div>
 
   <div class="stage">
     <div class="phone left"><img src="/img/3-mirror.jpg" alt="A glowing rainbow kaleidoscope made in Mirror Magic"></div>
     <div class="phone right"><img src="/img/4-name.jpg" alt="The name Mia in glowing neon letters"></div>
     <div class="phone mid"><img src="/img/1-home.jpg" alt="Splotchy's home screen"></div>
-    <img class="float blob buddy" id="buddy" src="/img/splotchy-excited.png" alt="Splotchy. Tap to say hi!">
-    <div class="bubble" id="bubble">Poke me! 👆</div>
-    <span class="float s1">🦄</span>
-    <span class="float s2">🌈</span>
-    <span class="float s3">⭐</span>
+    <span class="sticker st1">🦄</span><span class="sticker st2">🌈</span><span class="sticker st3">⭐</span><span class="sticker st4">🍭</span>
   </div>
 </header>
 
 <section class="wrap pop">
-  <h2 class="title hand">8 ways to make art</h2>
-  <p class="sub">Pick one. Make something awesome! ✨</p>
-  <div class="modes">
-    <div class="mode" style="background:var(--grape)"><div class="e">💭</div><b>Imagine</b><span>Say it, see it</span></div>
-    <div class="mode" style="background:var(--orange)"><div class="e">🖍️</div><b>Draw</b><span>Doodle anything</span></div>
-    <div class="mode" style="background:var(--sky)"><div class="e">🔢</div><b>Color by Number</b><span>Fill the squares</span></div>
-    <div class="mode" style="background:var(--teal)"><div class="e">🪞</div><b>Mirror Magic</b><span>Draw once, see 8!</span></div>
-    <div class="mode" style="background:#6366f1"><div class="e">✍️</div><b>Name Art</b><span>Your name, BIG</span></div>
-    <div class="mode" style="background:var(--pink)"><div class="e">🌈</div><b>Themes</b><span>Stickers galore</span></div>
-    <div class="mode" style="background:var(--lime)"><div class="e">📸</div><b>Scrapbook</b><span>Mix your photos</span></div>
-    <div class="mode" style="background:var(--cherry)"><div class="e">🎰</div><b>Surprise!</b><span>Pull the lever</span></div>
+  <div class="home-strip">
+    <a class="chunky white card challenge" href="https://apps.apple.com/app/id6824162290">
+      <span class="emoji-circle">🐙</span>
+      <span class="grow">
+        <small class="label orange">TODAY'S CHALLENGE</small>
+        <b>Throw an underwater party</b>
+      </span>
+      <span class="gold">+20⭐</span>
+    </a>
+    <div class="idea-row">
+      <a class="chunky tangerine card idea" href="https://apps.apple.com/app/id6824162290">
+        <span class="em">💡</span>
+        <span class="grow"><b>Give me an idea!</b><small>🎃 Halloween ideas inside!</small></span>
+      </a>
+      <span class="chunky white card target static"><span class="em">🎯</span><b>8</b></span>
+    </div>
   </div>
 </section>
 
 <section class="wrap pop">
-  <h2 class="title hand">Say it. Splotchy makes it!</h2>
-  <p class="sub">Mix ideas into something brand new.</p>
+  <h2 class="section-title">What do you want to make?</h2>
+  <a class="chunky grape-pink card imagine-card" href="#imagine">
+    <img class="splotch" src="/img/splotchy-wow.png" alt="">
+    <span class="grow">
+      <span class="ttl">Imagine <em>NEW</em></span>
+      <span class="sub">Say an idea. Splotchy makes it real!</span>
+      <span class="eq">🦄 + 🍕 = ?</span>
+    </span>
+  </a>
+  <div class="modes">
+    <div class="chunky mode static" style="--c: var(--tangerine)"><span class="e">🖍️</span><b>Draw</b><small>Doodle anything!</small></div>
+    <div class="chunky mode static" style="--c: var(--sky)"><span class="e">🔢</span><b>Color by Number</b><small>Fill the squares</small></div>
+    <div class="chunky mode static" style="--c: var(--bubblegum)"><span class="e">🌈</span><b>Themes</b><small>Pick &amp; decorate</small></div>
+    <div class="chunky mode static" style="--c: var(--lime)"><span class="e">📸</span><b>Scrapbook</b><small>Mix your photos</small></div>
+    <div class="chunky mode static" style="--c: #14b8a6"><span class="e">🪞</span><b>Mirror Magic</b><small>Draw once, see it 8x!</small></div>
+    <div class="chunky mode static" style="--c: #6366f1"><span class="e">✍️</span><b>Name Art</b><small>Your name, big &amp; bold</small></div>
+  </div>
+  <div class="chunky cherry card spin static">
+    <span class="em">🎰</span>
+    <span class="grow"><b>Surprise Spin</b><small>Feeling lucky? Pull the lever!</small></span>
+    <span class="chev">›</span>
+  </div>
+</section>
+
+<section class="wrap pop" id="imagine">
+  <h2 class="section-title center">Say it. Splotchy makes it!</h2>
   <div class="imagine">
     <div>
-      <div class="bubbles">
-        <span class="thought">🐱 a cat</span><span class="plus">+</span>
-        <span class="thought p">🧑‍🚀 astronaut</span><span class="plus">+</span>
-        <span class="thought s">🚀 in space</span>
+      <div class="bubble-tray">
+        <span class="thought" style="--c: var(--grape)">🐱 a cat</span>
+        <span class="plus">+</span>
+        <span class="thought" style="--c: var(--bubblegum)">🧑‍🚀 astronaut</span>
+        <span class="plus">+</span>
+        <span class="thought" style="--c: var(--sky)">🚀 in space</span>
       </div>
-      <div class="arrow">👉</div>
-      <p class="ai-note">Made right on your iPhone. Nothing goes online.</p>
+      <div class="make-it"><span class="chunky lime big static">MIX IT! 🌀</span></div>
+      <p class="note">Made right on your iPhone. Nothing goes online.</p>
     </div>
     <div class="phone"><img src="/img/2-imagine.jpg" alt="A cat astronaut floating in outer space"></div>
   </div>
 </section>
 
 <section class="wrap pop">
-  <div class="band">
-    <div class="inner">
-      <div>
-        <h2 class="hand">A new challenge every day! 🎯</h2>
-        <p>Finish them to dress up Splotchy!</p>
-        <div class="prizes"><span class="prize">🕶️</span><span class="prize">👑</span><span class="prize">🎩</span><span class="prize">🎀</span><span class="prize">🥳</span><span class="prize">🪄</span></div>
+  <div class="prizes">
+    <div>
+      <h2 class="section-title">Win prizes for Splotchy! 🏆</h2>
+      <p class="lead">Finish daily challenges to unlock outfits and sticker packs.</p>
+      <div class="badges">
+        <div class="badge on"><span>🕶️</span><b>Cool Shades</b></div>
+        <div class="badge on"><span>👑</span><b>Royal Crown</b></div>
+        <div class="badge"><span>🔒</span><b>Magic Stickers</b></div>
+        <div class="badge"><span>🔒</span><b>Top Hat</b></div>
+        <div class="badge"><span>🔒</span><b>Big Bow</b></div>
+        <div class="badge"><span>🔒</span><b>Wizard Hat</b></div>
       </div>
-      <div class="phone"><img src="/img/6-calendar.jpg" alt="Challenge calendar with gold stars"></div>
     </div>
+    <div class="phone"><img src="/img/6-calendar.jpg" alt="Challenge calendar with gold stars and prizes"></div>
   </div>
   <div class="seasons">
-    <div class="season"><span>🎃</span>Halloween</div>
-    <div class="season"><span>⛄️</span>Winter</div>
-    <div class="season"><span>💌</span>Valentine's</div>
-    <div class="season"><span>🌷</span>Spring</div>
-    <div class="season"><span>🏖️</span>Summer</div>
-    <div class="season"><span>🎒</span>School</div>
+    <span class="chunky white pill static">🎃 Halloween</span>
+    <span class="chunky white pill static">⛄️ Winter</span>
+    <span class="chunky white pill static">💌 Valentine's</span>
+    <span class="chunky white pill static">🌷 Spring</span>
+    <span class="chunky white pill static">🏖️ Summer</span>
+    <span class="chunky white pill static">🎒 School</span>
   </div>
 </section>
 
 <section class="pop" aria-label="Screenshots">
-  <div class="wrap"><h2 class="title hand">Look what you can make!</h2></div>
+  <div class="wrap"><h2 class="section-title center">Look what you can make!</h2></div>
   <div class="parade">
     <div class="track" id="track">
       <div class="phone"><img src="/img/3-mirror.jpg" alt=""></div>
@@ -351,33 +239,37 @@
 </section>
 
 <section class="wrap pop" id="grownups">
-  <div class="grown">
-    <h2 class="hand">For grown-ups 👋</h2>
-    <p class="sub">Safe, simple and totally free.</p>
+  <div class="gate">
+    <div class="lock">🔒</div>
+    <h2 class="section-title center" style="margin-bottom:4px">Grown-ups only!</h2>
+    <p class="q">What is 6 × 7? <span style="color:var(--soft)">(Just kidding. Come on in!)</span></p>
     <div class="promises">
-      <div class="promise"><div class="e">🚫</div><b>No ads</b><span>None. Ever.</span></div>
-      <div class="promise"><div class="e">🙅</div><b>No accounts</b><span>No sign-up needed</span></div>
-      <div class="promise"><div class="e">🔒</div><b>No data</b><span>Art stays on the phone</span></div>
-      <div class="promise"><div class="e">🧑‍🧒</div><b>Grown-up lock</b><span>On sharing &amp; settings</span></div>
+      <div class="chunky white card promise static"><span class="e">🚫</span><b>No ads</b><small>None. Ever.</small></div>
+      <div class="chunky white card promise static"><span class="e">🙅</span><b>No accounts</b><small>No sign-up needed</small></div>
+      <div class="chunky white card promise static"><span class="e">🔒</span><b>No data</b><small>Art stays on the phone</small></div>
+      <div class="chunky white card promise static"><span class="e">🧑‍🧒</span><b>Grown-up lock</b><small>On sharing &amp; settings</small></div>
     </div>
     <div class="faq">
-      <details><summary>Is the AI safe for kids?</summary><p>Imagine uses Apple's on-device image generator with Apple's own safety filters. Older iPhones use an offline emoji version.</p></details>
-      <details><summary>How do we set the wallpaper?</summary><p>Tap Done, then Save. Then open Settings → Wallpaper → Add New Wallpaper → Photos.</p></details>
-      <details><summary>Will it nag my kid?</summary><p>No. The daily reminder stays off unless you turn it on.</p></details>
-      <details><summary>What does it cost?</summary><p>Nothing. No in-app purchases, no subscription. <a href="/privacy.html">Privacy policy</a> · <a href="/support.html">Help</a></p></details>
+      <details class="chunky white card static"><summary>Is the AI safe for kids?</summary><p>Imagine uses Apple's on-device image generator with Apple's own safety filters. Older iPhones use an offline emoji version.</p></details>
+      <details class="chunky white card static"><summary>How do we set the wallpaper?</summary><p>Tap Done, then Save. Then open Settings → Wallpaper → Add New Wallpaper → Photos.</p></details>
+      <details class="chunky white card static"><summary>Will it nag my kid?</summary><p>No. The daily reminder stays off unless you turn it on.</p></details>
+      <details class="chunky white card static"><summary>What does it cost?</summary><p>Nothing. No in-app purchases, no subscription. <a href="/privacy.html">Privacy policy</a> · <a href="/support.html">Help</a></p></details>
     </div>
   </div>
 </section>
 
-<section class="final wrap pop">
-  <img class="buddy" id="buddy2" src="/img/splotchy.png" alt="Splotchy. Tap to say hi!">
-  <h2 class="hand">Let's make something!</h2>
-  <a class="btn" href="https://apps.apple.com/app/id6824162290">Get Splotchy free ✨</a>
+<section class="wrap final pop">
+  <div class="greet">
+    <img class="buddy splotch dance" id="buddy2" src="/img/splotchy-excited.png" alt="Splotchy. Tap to say hi!">
+    <div class="speech left-tail" id="speech2">Let's make something together!</div>
+  </div>
+  <h2 class="section-title center">Ready? Let's go! 🚀</h2>
+  <a class="chunky lime big" href="https://apps.apple.com/app/id6824162290">GET SPLOTCHY FREE ✨</a>
 </section>
 
-<footer>
+<footer class="foot">
   <div class="wrap">
-    <span class="hand" style="font-size:24px; color:var(--grape)">splotchy</span>
+    <a href="/" class="wordmark small" aria-label="Splotchy home"><span>S</span><span>p</span><span>l</span><span>o</span><span>t</span><span>c</span><span>h</span><span>y</span></a>
     <a href="/support.html">Help</a>
     <a href="/privacy.html">Privacy</a>
     <a href="mailto:cameron.t.luck@gmail.com">Say hi</a>
@@ -385,68 +277,11 @@
   </div>
 </footer>
 
-<style>
-  /* Floating stickers around the hero phones */
-  #buddy { left: 0; top: 290px; }
-  #bubble { left: 98px; top: 284px; }
-  .s1 { right: 4%; top: 6px; animation-delay: -1s; }
-  .s2 { right: 0; top: 330px; animation-delay: -2s; }
-  .s3 { left: 6%; top: 36px; animation-delay: -.5s; }
-  @media (max-width: 560px) {
-    #buddy { top: 250px; left: -4px; }
-    #bubble { left: 62px; top: 218px; font-size: 14px; padding: 8px 12px; }
-    .s1 { right: 0; top: -8px; }
-    .s2 { right: -4px; top: 300px; }
-    .s3 { left: 0; top: 20px; }
-  }
-</style>
-
+<script src="/app.js"></script>
 <script>
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Rotating idea chip
-  const ideas = ['🍭 made of candy', '🚀 in outer space', '🦄 with a unicorn', '👑 wearing a crown', '🌈 super rainbow', '✍️ with your name'];
-  const swap = document.getElementById('swap');
-  let i = 0;
-  if (!reduce) setInterval(() => {
-    swap.classList.add('out');
-    setTimeout(() => { i = (i + 1) % ideas.length; swap.textContent = ideas[i]; swap.classList.remove('out'); }, 260);
-  }, 2200);
-
-  // Poke Splotchy: new color, a new line, and confetti
-  const lines = ["Hi! I'm Splotchy! 👋", 'Hee hee, that tickles!', 'I can turn ANY color! 🎨', "Let's make a wallpaper!", 'Wiggle wiggle! 🕺', 'Boop! 💜'];
-  let hue = 0, n = 0;
-  [['buddy', 'bubble'], ['buddy2', null]].forEach(([id, bub]) => {
-    const el = document.getElementById(id);
-    el.addEventListener('click', () => {
-      hue = (hue + 70) % 360;
-      el.style.filter = `hue-rotate(${hue}deg)`;
-      if (bub) document.getElementById(bub).textContent = lines[n++ % lines.length];
-      confetti(el);
-    });
-  });
-
-  function confetti(el) {
-    if (reduce) return;
-    const r = el.getBoundingClientRect();
-    for (let k = 0; k < 10; k++) {
-      const s = document.createElement('span');
-      s.textContent = ['⭐', '💖', '✨', '🎉', '🌈'][k % 5];
-      Object.assign(s.style, { position: 'fixed', left: r.left + r.width / 2 + 'px', top: r.top + r.height / 2 + 'px', fontSize: '22px', pointerEvents: 'none', zIndex: 50, transition: 'transform .9s ease-out, opacity .9s' });
-      document.body.appendChild(s);
-      const a = Math.random() * Math.PI * 2, d = 60 + Math.random() * 70;
-      requestAnimationFrame(() => { s.style.transform = `translate(${Math.cos(a) * d}px, ${Math.sin(a) * d - 30}px) rotate(${a * 90}deg)`; s.style.opacity = 0; });
-      setTimeout(() => s.remove(), 950);
-    }
-  }
-
   // Double the parade so it loops seamlessly
   const track = document.getElementById('track');
   track.innerHTML += track.innerHTML;
-
-  // Pop sections in as you scroll
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
-  document.querySelectorAll('.pop').forEach(el => io.observe(el));
 </script>
 </body>
 </html>

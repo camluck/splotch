@@ -1,75 +1,36 @@
-/* Shared look for Splotchy's help and privacy pages. */
-:root {
-  --cream: #fff7ec;
-  --ink: #2b2433;
-  --soft: #6e6578;
-  --grape: #8b5cf6;
-  --pink: #ff5fa2;
-  --card: #ffffff;
-  --line: #f0e4d2;
-  --dot: rgba(255, 150, 0, 0.13);
-}
-@media (prefers-color-scheme: dark) {
-  :root { --cream: #1c1626; --ink: #fff7ec; --soft: #c7bdd6; --card: #2a2236; --line: #3a3048; --dot: rgba(255, 150, 0, 0.08); }
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--cream);
-  background-image: radial-gradient(circle, var(--dot) 7px, transparent 8px);
-  background-size: 46px 46px;
-  color: var(--ink);
-  font-family: "Nunito", ui-rounded, system-ui, -apple-system, sans-serif;
-  font-weight: 600;
-  font-size: 17px;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-}
-img { display: block; max-width: 100%; }
-a { color: var(--grape); font-weight: 800; }
-b, strong { font-weight: 900; }
-.wrap { width: 100%; max-width: 720px; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px; }
-.hand { font-family: "Gochi Hand", "Marker Felt", cursive; font-weight: 400; }
+/* Help and privacy pages: app.css gives the Splotchy look, this adds page bits. */
+@import url("/app.css");
 
-nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--cream) 90%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-nav .wrap { display: flex; align-items: center; height: 64px; }
-.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 28px; color: var(--ink); }
-.logo img { width: 34px; height: 34px; }
-.back {
-  margin-left: auto; text-decoration: none; color: var(--ink); background: var(--card);
-  border: 3px solid var(--line); border-radius: 16px; padding: 7px 14px; font-size: 15px;
-}
+body { font-weight: 700; font-size: 17px; line-height: 1.55; }
+a { color: var(--grape); font-weight: 900; }
+b, strong { font-weight: 900; }
+.wrap { max-width: 720px; }
+.topbar .wrap { max-width: 720px; }
+.back { margin-left: auto; padding: 8px 16px; border-radius: 16px; font-size: 15px; box-shadow: 0 4px 0 var(--cloud); }
+.back:hover { box-shadow: 0 6px 0 var(--cloud); }
 
 .page-head { text-align: center; padding: 28px 0 8px; }
-.mascot { width: 120px; margin: 0 auto; animation: bob 3s ease-in-out infinite; }
-@keyframes bob { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-10px) rotate(5deg); } }
-h1 { font-size: clamp(44px, 9vw, 64px); line-height: 1; margin: 8px 0 6px; }
-.lead { color: var(--soft); font-weight: 800; margin: 0 0 24px; }
+.mascot { width: 120px; margin: 0 auto; }
+h1 { font-size: clamp(40px, 9vw, 60px); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; margin: 10px 0 6px; }
+.lead { margin: 0 0 26px; }
 
-.card { background: var(--card); border: 3px solid var(--line); border-radius: 26px; padding: 18px 20px; }
-.hero-card { display: flex; gap: 14px; align-items: center; box-shadow: 0 5px 0 var(--line); }
-.hero-card .big { font-size: 40px; line-height: 1; }
+.card { background: #fff; border: 2px solid var(--cloud); border-radius: 24px; padding: 18px 20px; }
+.hero-card { display: flex; gap: 14px; align-items: center; box-shadow: 0 5px 0 var(--sunshine); }
+.hero-card .big { width: 58px; height: 58px; flex: none; border-radius: 50%; background: color-mix(in srgb, var(--sunshine) 30%, white); display: grid; place-items: center; font-size: 32px; line-height: 1; }
 
-.qa { display: grid; gap: 12px; margin-top: 22px; }
-details { background: var(--card); border: 3px solid var(--line); border-radius: 22px; padding: 16px 20px; }
-summary { cursor: pointer; font-weight: 900; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
-summary::-webkit-details-marker { display: none; }
-summary::after { content: "+"; color: var(--grape); font-size: 24px; line-height: 1; }
-details[open] summary::after { content: "–"; }
-details p, details ol { margin: 10px 0 2px; color: var(--soft); }
+.qa { display: grid; gap: 14px; margin-top: 24px; }
+details { background: #fff; border: 2px solid var(--cloud); border-radius: 22px; padding: 16px 20px; box-shadow: 0 5px 0 var(--cloud); }
+details ol { margin: 10px 0 2px; color: var(--soft); }
 details li { margin: 4px 0; }
 
-.doc { margin-top: 10px; }
-.doc h2 { font-size: 21px; font-weight: 900; margin: 30px 0 6px; }
+.doc { margin-top: 14px; background: #fff; border: 2px solid var(--cloud); border-radius: 24px; padding: 6px 24px 20px; box-shadow: 0 5px 0 var(--cloud); }
+.doc h2 { font-size: 21px; font-weight: 900; margin: 26px 0 6px; color: var(--grape); }
 .doc ul { padding-left: 22px; }
 .doc li { margin: 6px 0; }
 .doc p, .doc li { color: var(--soft); }
 .doc p strong, .doc li strong { color: var(--ink); }
 
-footer { margin-top: 56px; padding: 26px 0 44px; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: center; color: var(--soft); font-size: 15px; font-weight: 800; }
+footer { margin-top: 60px; padding: 26px 0 44px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: center; color: var(--soft); font-size: 15px; }
 footer a { color: var(--soft); text-decoration: none; }
-footer a:hover { color: var(--grape); }
-footer .brand { font-size: 24px; color: var(--grape); }
-
-@media (prefers-reduced-motion: reduce) { .mascot { animation: none; } }
+footer a:not(.wordmark):hover { color: var(--grape); }
