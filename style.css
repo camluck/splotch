@@ -28,7 +28,7 @@ body {
 img { display: block; max-width: 100%; }
 a { color: var(--grape); font-weight: 800; }
 b, strong { font-weight: 900; }
-.wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 20px; }
+.wrap { width: 100%; max-width: 720px; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px; }
 .hand { font-family: "Gochi Hand", "Marker Felt", cursive; font-weight: 400; }
 
 nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--cream) 90%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
