@@ -1,42 +1,75 @@
+/* Shared look for Splotchy's help and privacy pages. */
 :root {
+  --cream: #fff7ec;
+  --ink: #2b2433;
+  --soft: #6e6578;
   --grape: #8b5cf6;
   --pink: #ff5fa2;
-  --ink: #3c3c3c;
-  --muted: #6b6b6b;
-  --cream: #fff9f0;
   --card: #ffffff;
-  --line: #ece4d8;
+  --line: #f0e4d2;
+  --dot: rgba(255, 150, 0, 0.13);
 }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --ink: #f3f0f7;
-    --muted: #b9b2c4;
-    --cream: #1b1626;
-    --card: #251f33;
-    --line: #3a3149;
-  }
+  :root { --cream: #1c1626; --ink: #fff7ec; --soft: #c7bdd6; --card: #2a2236; --line: #3a3048; --dot: rgba(255, 150, 0, 0.08); }
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   background: var(--cream);
+  background-image: radial-gradient(circle, var(--dot) 7px, transparent 8px);
+  background-size: 46px 46px;
   color: var(--ink);
-  font: 17px/1.6 ui-rounded, -apple-system, "SF Pro Rounded", system-ui, sans-serif;
+  font-family: "Nunito", ui-rounded, system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
 }
-main { max-width: 680px; margin: 0 auto; padding: 40px 16px 64px; }
-header { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-header img { width: 72px; height: 72px; border-radius: 18px; }
-h1 { font-size: 32px; line-height: 1.15; margin: 0; font-weight: 900; color: var(--grape); }
-h2 { font-size: 21px; margin: 32px 0 8px; font-weight: 800; }
-p, li { color: var(--ink); }
-.muted { color: var(--muted); font-size: 15px; }
-.card {
-  background: var(--card);
-  border: 2px solid var(--line);
-  border-radius: 20px;
-  padding: 20px 22px;
-  margin: 18px 0;
+img { display: block; max-width: 100%; }
+a { color: var(--grape); font-weight: 800; }
+b, strong { font-weight: 900; }
+.wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 20px; }
+.hand { font-family: "Gochi Hand", "Marker Felt", cursive; font-weight: 400; }
+
+nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--cream) 90%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+nav .wrap { display: flex; align-items: center; height: 64px; }
+.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 28px; color: var(--ink); }
+.logo img { width: 34px; height: 34px; }
+.back {
+  margin-left: auto; text-decoration: none; color: var(--ink); background: var(--card);
+  border: 3px solid var(--line); border-radius: 16px; padding: 7px 14px; font-size: 15px;
 }
-a { color: var(--grape); font-weight: 700; }
-ul { padding-left: 22px; }
-footer { margin-top: 48px; color: var(--muted); font-size: 14px; }
+
+.page-head { text-align: center; padding: 28px 0 8px; }
+.mascot { width: 120px; margin: 0 auto; animation: bob 3s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-10px) rotate(5deg); } }
+h1 { font-size: clamp(44px, 9vw, 64px); line-height: 1; margin: 8px 0 6px; }
+.lead { color: var(--soft); font-weight: 800; margin: 0 0 24px; }
+
+.card { background: var(--card); border: 3px solid var(--line); border-radius: 26px; padding: 18px 20px; }
+.hero-card { display: flex; gap: 14px; align-items: center; box-shadow: 0 5px 0 var(--line); }
+.hero-card .big { font-size: 40px; line-height: 1; }
+
+.qa { display: grid; gap: 12px; margin-top: 22px; }
+details { background: var(--card); border: 3px solid var(--line); border-radius: 22px; padding: 16px 20px; }
+summary { cursor: pointer; font-weight: 900; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--grape); font-size: 24px; line-height: 1; }
+details[open] summary::after { content: "–"; }
+details p, details ol { margin: 10px 0 2px; color: var(--soft); }
+details li { margin: 4px 0; }
+
+.doc { margin-top: 10px; }
+.doc h2 { font-size: 21px; font-weight: 900; margin: 30px 0 6px; }
+.doc ul { padding-left: 22px; }
+.doc li { margin: 6px 0; }
+.doc p, .doc li { color: var(--soft); }
+.doc p strong, .doc li strong { color: var(--ink); }
+
+footer { margin-top: 56px; padding: 26px 0 44px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: center; color: var(--soft); font-size: 15px; font-weight: 800; }
+footer a { color: var(--soft); text-decoration: none; }
+footer a:hover { color: var(--grape); }
+footer .brand { font-size: 24px; color: var(--grape); }
+
+@media (prefers-reduced-motion: reduce) { .mascot { animation: none; } }
