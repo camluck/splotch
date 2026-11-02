@@ -1,0 +1,8 @@
+<!doctype html><meta charset="utf-8"><title>helper</title><script>
+(async () => {
+  const names = ['01-island','02-today','03-race','04-home','05-school','06-closet','07-story','08-room','09-mix','10-imagine'];
+  const shots = [];
+  for (const n of names) shots.push({name: n + '.jpg', blob: await (await fetch(n + '.jpg')).blob()});
+  (window.opener || window.parent).postMessage({splotchShots: shots}, 'https://appstoreconnect.apple.com');
+})();
+</script>
